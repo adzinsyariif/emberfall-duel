@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emberfall Duel — a card game of ember and sigil</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="styles/table.css">
+<link rel="stylesheet" href="styles/cards.css">
+</head>
+<body>
+<main id="table" aria-label="Emberfall Duel table">
+  <header id="topbar">
+    <div class="brand">✦ EMBERFALL DUEL ✦</div>
+    <div id="turn-count" class="turn-count">Turn 1</div>
+    <div id="turn-status" class="turn-status">Your turn — play cards, then end the turn.</div>
+    <button type="button" id="mute-btn" class="mute-btn">🔊 Sound</button>
+  </header>
+
+  <section id="foe-zone" class="mage-zone" aria-label="Opponent">
+    <div id="foe-portrait" class="portrait foe">
+      <div class="portrait-glyph">♜</div>
+      <div class="portrait-info">
+        <div class="mage-name">Korr</div>
+        <div class="mage-title">Ashen Magistrate</div>
+        <div class="life-bar"><div class="life-fill"></div><span class="life-number">30 / 30</span></div>
+        <div class="shield-number"></div>
+        <div class="score-line"></div>
+      </div>
+    </div>
+    <div class="hand-column">
+      <div id="foe-ember" class="ember-row"></div>
+      <div id="foe-hand" class="hand foe-hand"></div>
+      <div id="foe-count" class="hand-count"></div>
+    </div>
+  </section>
+
+  <section id="middle" class="middle">
+    <div class="resonance-box">
+      <div id="resonance" class="resonance">Play two cards of one sigil in a turn for Resonance +2</div>
+      <button type="button" id="end-turn" class="end-turn">End Turn ⏎</button>
+    </div>
+    <ol id="duel-log" class="duel-log" aria-label="Duel log"></ol>
+  </section>
+
+  <section id="player-zone" class="mage-zone" aria-label="You">
+    <div id="player-portrait" class="portrait player">
+      <div class="portrait-glyph">🕯</div>
+      <div class="portrait-info">
+        <div class="mage-name">Wren</div>
+        <div class="mage-title">Lantern Keeper</div>
+        <div class="life-bar"><div class="life-fill"></div><span class="life-number">30 / 30</span></div>
+        <div class="shield-number"></div>
+        <div class="score-line"></div>
+      </div>
+    </div>
+    <div class="hand-column">
+      <div id="player-ember" class="ember-row"></div>
+      <div id="player-hand" class="hand player-hand"></div>
+      <div id="player-count" class="hand-count"></div>
+    </div>
+  </section>
+
+  <div id="overlay" class="overlay hidden" data-kind="">
+    <div class="overlay-panel">
+      <h1 id="overlay-title">EMBERFALL DUEL</h1>
+      <div id="overlay-body"></div>
+    </div>
+  </div>
+</main>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

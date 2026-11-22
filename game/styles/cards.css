@@ -1,0 +1,54 @@
+/* Emberfall Duel — the cards: faces, backs, sigil colours, the fan. */
+.card {
+  position: relative; width: 118px; height: 178px; flex: 0 0 auto;
+  border-radius: 12px; border: 2px solid #d8c49a; cursor: pointer;
+  font-family: Georgia, 'Times New Roman', serif; text-align: center;
+  color: #241708; padding: 0;
+  background: linear-gradient(175deg, #fff8e6 0%, #f3e7cf 55%, #e2cd9f 100%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.55);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+  animation: deal-in 0.35s ease backwards;
+}
+@keyframes deal-in { from { transform: translateY(26px) rotate(2deg); opacity: 0; } }
+.card:hover { transform: translateY(-14px) rotate(-1deg); }
+.card.playable { border-color: #ffd98a; box-shadow: 0 0 0 2px rgba(232, 161, 58, 0.55), 0 6px 14px rgba(0, 0, 0, 0.6); }
+.card.playable:hover { box-shadow: 0 0 0 3px rgba(232, 161, 58, 0.9), 0 10px 18px rgba(0, 0, 0, 0.65); }
+.card:not(.playable) { filter: saturate(0.75) brightness(0.92); }
+.card:focus-visible { outline: 3px solid #ffd98a; outline-offset: 2px; }
+
+.card-cost {
+  position: absolute; top: 6px; left: 6px; width: 30px; height: 30px;
+  border-radius: 50%; background: var(--sigil, #e8a13a); color: #fff;
+  font-size: 17px; font-weight: bold; line-height: 30px;
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+.card-glyph { display: block; font-size: 26px; line-height: 1; margin-top: 26px; }
+.card-value {
+  display: block; font-size: 40px; font-weight: bold; line-height: 1.05;
+  color: #1a120a;
+}
+.card-sigil-name { display: block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold; }
+.card-name {
+  display: block; font-size: 13.5px; font-weight: bold; line-height: 1.2;
+  padding: 3px 6px 0; min-height: 30px;
+}
+.card-text { display: block; font-size: 11px; line-height: 1.3; color: #5a4630; padding: 0 8px; font-style: italic; }
+
+.card-back {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(232, 161, 58, 0.45), transparent 58%),
+    repeating-linear-gradient(45deg, #5a3416 0 10px, #40260f 10px 20px);
+  border-color: #e8a13a; cursor: default;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.55), inset 0 0 0 3px rgba(232, 161, 58, 0.35);
+}
+.card-back .back-glyph { font-size: 34px; color: #ffd98a; text-shadow: 0 0 12px rgba(232, 161, 58, 0.9); }
+.card-back .back-word { font-size: 10px; letter-spacing: 2px; color: #ffd98a; }
+
+/* Fan the hands slightly so the table reads as a dealt hand, not a grid. */
+.player-hand .card:nth-child(odd) { transform: rotate(-1.2deg); }
+.player-hand .card:nth-child(even) { transform: rotate(1.2deg); }
+.player-hand .card:nth-child(odd):hover { transform: translateY(-14px) rotate(-2deg); }
+.player-hand .card:nth-child(even):hover { transform: translateY(-14px) rotate(2deg); }
+.foe-hand .card-back:nth-child(odd) { transform: rotate(-1.5deg) translateY(-4px); }
+.foe-hand .card-back:nth-child(even) { transform: rotate(1.5deg) translateY(2px); }
